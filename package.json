@@ -36,6 +36,7 @@
     "typescript": "^4.8.3"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/TheChrisader"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   }
 }
