@@ -1,6 +1,7 @@
 {
   "name": "@thechrisader/accelerator-ui",
   "version": "1.0.0",
+  "private": "false",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
