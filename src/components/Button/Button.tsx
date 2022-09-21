@@ -3,11 +3,11 @@ import React from "react";
 import "./Button.scss";
 
 export interface ButtonProps {
-  label: string;
+  text: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ label }) => {
-  return <button>{label}</button>;
+const Button: React.FC<ButtonProps> = ({ text }) => {
+  return <button>{text}</button>;
 };
 
 export default Button;
