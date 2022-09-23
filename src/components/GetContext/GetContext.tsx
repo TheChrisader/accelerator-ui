@@ -3,7 +3,7 @@ import ThemeContext from "../../context/ThemeContext";
 
 import defaultColorSet from "../../styles";
 
-const GetContext = (WrappedComponent: React.FC<any>): React.FC => {
+const GetContext = (WrappedComponent: React.FC<any>) => {
   console.log("theme");
 
   return (props: any) => {
