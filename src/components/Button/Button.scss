@@ -1,3 +1,62 @@
-button {
-  font-size: 50px;
+@import "../../styles/style.css";
+
+.aui-button {
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  border: 0;
+  border-radius: 3em;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+}
+
+.aui-button-primary {
+  color: white;
+  background-color: var(--aui-button-primaryColor);
+
+  &:active {
+    background-color: #096299;
+  }
+}
+
+.aui-button-secondary {
+  color: rgb(255, 255, 255);
+  background-color: rgb(201, 96, 25);
+
+  &:active {
+    background-color: rgb(145, 68, 16);
+  }
+}
+
+.aui-button-success {
+  color: white;
+  background-color: rgb(8, 216, 8);
+
+  &:active {
+    background-color: rgb(15, 128, 15);
+  }
+}
+
+.aui-button-danger {
+  color: white;
+  background-color: rgb(204, 15, 15);
+
+  &:active {
+    background-color: rgb(124, 14, 14);
+  }
+}
+
+.aui-button-small {
+  font-size: 12px;
+  padding: 10px 16px;
+}
+
+.aui-button-medium {
+  font-size: 14px;
+  padding: 11px 20px;
+}
+
+.aui-button-large {
+  font-size: 16px;
+  padding: 12px 24px;
 }
