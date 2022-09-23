@@ -12,7 +12,7 @@ export interface ButtonProps {
   backgroundColor?: string;
   className?: string;
   size?: "small" | "medium" | "large";
-  outlined: boolean;
+  outlined?: boolean;
   type?: "button" | "submit";
   onClick?: () => void;
 }

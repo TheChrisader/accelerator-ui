@@ -12,7 +12,6 @@ export default [
   {
     input: "src/index.ts",
     external: ["react", "react-dom", "styled-components"],
-    globals: { "styled-components": "styled" },
     output: [
       {
         file: packageJson.main,
