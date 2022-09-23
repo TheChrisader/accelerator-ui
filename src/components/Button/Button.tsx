@@ -39,4 +39,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default GetContext(Button);
+export default Button;

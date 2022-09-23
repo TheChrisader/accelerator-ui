@@ -12,6 +12,4 @@ export interface Theme {
 }
 
 // Create the theme colors state
-export default React.createContext<Theme | undefined>({
-  primaryColor: "#006eff",
-});
+export default React.createContext<Theme | undefined>(undefined);
