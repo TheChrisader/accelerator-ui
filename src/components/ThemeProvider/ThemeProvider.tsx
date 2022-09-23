@@ -26,17 +26,6 @@ export interface ThemeProviderProps {
 }
 
 const ThemeProvider: React.FC<ThemeProviderProps> = ({ theme, children }) => {
-  const currentTheme = React.useContext(ThemeContext);
-
-  React.useEffect(() => {
-    const root = document.documentElement;
-    if (currentTheme)
-      root?.style.setProperty(
-        `--aui-button-primaryColor`,
-        currentTheme?.primaryColor as string
-      );
-  }, [currentTheme]);
-
   return (
     <ThemeContext.Provider
       value={{

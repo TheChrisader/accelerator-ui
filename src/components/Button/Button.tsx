@@ -1,4 +1,5 @@
 import React from "react";
+import ThemeContext from "../../context/ThemeContext";
 import GetContext from "../GetContext";
 
 import "./Button.scss";
@@ -22,6 +23,17 @@ const Button: React.FC<ButtonProps> = ({
   type = "button",
   ...props
 }) => {
+  const currentTheme = React.useContext(ThemeContext);
+
+  React.useEffect(() => {
+    const root = document.documentElement;
+    if (currentTheme)
+      root?.style.setProperty(
+        `--aui-button-primaryColor`,
+        currentTheme?.primaryColor as string
+      );
+  }, [currentTheme]);
+
   return (
     <button
       type={type}
