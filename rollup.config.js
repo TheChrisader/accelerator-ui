@@ -10,8 +10,9 @@ const packageJson = require("./package.json");
 
 export default [
   {
-    external: ["react", "react-dom"],
     input: "src/index.ts",
+    external: ["react", "react-dom", "styled-components"],
+    globals: { "styled-components": "styled" },
     output: [
       {
         file: packageJson.main,

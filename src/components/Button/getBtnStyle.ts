@@ -1,3 +1,6 @@
+import styled from "styled-components";
+import Color from "color";
+
 import { Theme } from "../../context/ThemeContext";
 import {
   primaryColor,
@@ -10,7 +13,22 @@ import {
   dangerTextColor,
 } from "../../styles";
 
-const getBtnStyle = (variant: string, context: Theme) => {
+export const modifyColor = (
+  color: string,
+  type: "darken" | "lighten",
+  degree: number = 0.5
+) => {
+  const currentColor = Color(color);
+  let newColor;
+  if (type === "darken") {
+    newColor = currentColor.darken(degree).string();
+  } else {
+    newColor = currentColor.lighten(degree).string();
+  }
+  return newColor;
+};
+
+const getBtnStyle = (variant: string, outlined: boolean, context: Theme) => {
   let color;
   let backgroundColor;
 
@@ -59,6 +77,8 @@ const getBtnStyle = (variant: string, context: Theme) => {
         backgroundColor = primaryColor;
     }
   }
+
+  return [backgroundColor, color];
 };
 
 export default getBtnStyle;
