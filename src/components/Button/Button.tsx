@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import ThemeContext, { Theme } from "../../context/ThemeContext";
 
-import getBtnStyle, { modifyColor } from "./getBtnStyle";
+import { getStyle, modifyColor } from "../../../util/getStyle";
 
 import "./Button.scss";
 export interface ButtonProps {
@@ -14,6 +14,7 @@ export interface ButtonProps {
   size?: "small" | "medium" | "large";
   outlined?: boolean;
   type?: "button" | "submit";
+  rounded?: "";
   onClick?: () => void;
 }
 
@@ -22,19 +23,16 @@ interface StyledButtonProps {
   textColor: string;
 }
 
-interface OutlinedButtonProps {
-  mainColor: string;
-}
-
 let StyledButton = styled.button<StyledButtonProps>`
   background-color: ${(props) => props.mainColor};
   color: ${(props) => props.textColor};
+  border: 0;
+  transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   :hover {
     background-color: ${({ mainColor }) =>
       modifyColor(mainColor, "darken", 0.25)};
   }
-  :focus,
-  :hover {
+  :focus {
     background-color: ${({ mainColor }) =>
       modifyColor(mainColor, "darken", 0.1)};
   }
@@ -46,12 +44,15 @@ let StyledButton = styled.button<StyledButtonProps>`
   }
 `;
 
-let OutlinedButton = styled.button<OutlinedButtonProps>`
+let OutlinedButton = styled.button<StyledButtonProps>`
   background-color: white;
   color: ${(props) => props.mainColor};
   border: 1px solid ${(props) => props.mainColor};
+  transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1),
+    color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   :hover {
-    background-color: ${(props) => props.mainColor}15;
+    background-color: ${(props) => props.mainColor};
+    color: ${(props) => props.textColor};
   }
   :focus {
     background-color: none;
@@ -60,7 +61,7 @@ let OutlinedButton = styled.button<OutlinedButtonProps>`
     background-color: none;
   }
   :active {
-    background-color: ${(props) => props.mainColor}33;
+    background-color: ${({ mainColor }) => modifyColor(mainColor, "darken")};
   }
 `;
 
@@ -76,7 +77,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const currentTheme = React.useContext(ThemeContext);
 
-  const [mainColor, textColor] = getBtnStyle(
+  const [mainColor, textColor] = getStyle(
     variant,
     outlined,
     currentTheme as Theme
@@ -85,13 +86,9 @@ const Button: React.FC<ButtonProps> = ({
   return outlined ? (
     <OutlinedButton
       type={type}
-      className={[
-        "aui-button",
-        `aui-button-${variant}`,
-        `aui-button-${size}`,
-        className,
-      ].join(" ")}
+      className={["aui-button", `aui-button-${size}`, className].join(" ")}
       mainColor={mainColor}
+      textColor={textColor}
       style={{ backgroundColor }}
       {...props}
     >

@@ -1,7 +1,6 @@
-import styled from "styled-components";
 import Color from "color";
 
-import { Theme } from "../../context/ThemeContext";
+import { Theme } from "../src/context/ThemeContext";
 import {
   primaryColor,
   primaryTextColor,
@@ -11,7 +10,7 @@ import {
   successTextColor,
   dangerColor,
   dangerTextColor,
-} from "../../styles";
+} from "../src/styles";
 
 export const modifyColor = (
   color: string,
@@ -28,7 +27,11 @@ export const modifyColor = (
   return newColor;
 };
 
-const getBtnStyle = (variant: string, outlined: boolean, context: Theme) => {
+export const getStyle = (
+  variant: string,
+  outlined: boolean,
+  context: Theme
+) => {
   let color;
   let backgroundColor;
 
@@ -80,5 +83,3 @@ const getBtnStyle = (variant: string, outlined: boolean, context: Theme) => {
 
   return [backgroundColor, color];
 };
-
-export default getBtnStyle;
