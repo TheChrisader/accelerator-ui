@@ -7,7 +7,8 @@ import { getStyle, modifyColor } from "../../../util/getStyle";
 
 import "./Button.scss";
 export interface ButtonProps {
-  label: string;
+  label?: string;
+  children: React.ReactNode;
   variant?: "primary" | "secondary" | "success" | "danger";
   backgroundColor?: string;
   className?: string;
@@ -71,9 +72,10 @@ const Button: React.FC<ButtonProps> = ({
   className,
   size = "medium",
   label,
+  children,
   outlined = false,
   type = "button",
-  ...props
+  onClick,
 }) => {
   const currentTheme = React.useContext(ThemeContext);
 
@@ -90,9 +92,9 @@ const Button: React.FC<ButtonProps> = ({
       mainColor={mainColor}
       textColor={textColor}
       style={{ backgroundColor }}
-      {...props}
+      onClick={onClick}
     >
-      {label}
+      {children ? children : label}
     </OutlinedButton>
   ) : (
     <StyledButton
@@ -106,9 +108,9 @@ const Button: React.FC<ButtonProps> = ({
       mainColor={mainColor}
       textColor={textColor}
       style={{ backgroundColor }}
-      {...props}
+      onClick={onClick}
     >
-      {label}
+      {children ? children : label}
     </StyledButton>
   );
 };
