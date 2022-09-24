@@ -13,7 +13,8 @@
     "test": "jest",
     "rollup": "rollup -c",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "generate": "node ./util/createComponent.js"
   },
   "repository": {
     "type": "git",
