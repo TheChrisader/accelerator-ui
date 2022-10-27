@@ -1,68 +1,63 @@
 import React from "react";
 import styled from "styled-components";
 
-import ThemeContext, { Theme } from "../../context/ThemeContext";
+import ThemeContext from "../../context/ThemeContext";
 
-import { getStyle, modifyColor } from "../../../util/getStyle";
+import { getStyle } from "../../../util/getStyle";
 
 import "./Button.scss";
-export interface ButtonProps {
-  label?: string;
+export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   children: React.ReactNode;
   variant?: "primary" | "secondary" | "success" | "danger";
   backgroundColor?: string;
   className?: string;
   size?: "small" | "medium" | "large";
   outlined?: boolean;
-  type?: "button" | "submit";
   rounded?: "";
   onClick?: () => void;
 }
 
+export interface IColorProps {
+  default?: string;
+  light?: string;
+  dark?: string;
+  border?: string;
+  background?: string;
+}
+
 interface StyledButtonProps {
-  mainColor: string;
-  textColor: string;
+  mainColor: IColorProps;
 }
 
 let StyledButton = styled.button<StyledButtonProps>`
-  background-color: ${(props) => props.mainColor};
-  color: ${(props) => props.textColor};
+  background-color: ${(props) => props.mainColor.default};
+  color: white;
   border: 0;
   transition: background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  :hover {
-    background-color: ${({ mainColor }) =>
-      modifyColor(mainColor, "darken", 0.25)};
-  }
+  :hover,
   :focus {
-    background-color: ${({ mainColor }) =>
-      modifyColor(mainColor, "darken", 0.1)};
-  }
-  :-moz-focusring {
-    background-color: none;
+    background-color: ${(props) => props.mainColor.light};
   }
   :active {
-    background-color: ${({ mainColor }) => modifyColor(mainColor, "darken")};
+    background-color: ${(props) => props.mainColor.dark};
   }
 `;
 
 let OutlinedButton = styled.button<StyledButtonProps>`
   background-color: white;
-  color: ${(props) => props.mainColor};
-  border: 1px solid ${(props) => props.mainColor};
+  color: ${(props) => props.mainColor.default};
+  border: 1px solid ${(props) => props.mainColor.default};
   transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1),
     color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   :hover {
-    background-color: ${(props) => props.mainColor};
-    color: ${(props) => props.textColor};
+    background-color: ${(props) => props.mainColor.default};
+    color: white;
   }
   :focus {
     background-color: none;
   }
-  :-moz-focusring {
-    background-color: none;
-  }
   :active {
-    background-color: ${({ mainColor }) => modifyColor(mainColor, "darken")};
+    background-color: ${(props) => props.mainColor.dark};
   }
 `;
 
@@ -71,34 +66,25 @@ const Button: React.FC<ButtonProps> = ({
   backgroundColor,
   className,
   size = "medium",
-  label,
   children,
   outlined = false,
-  type = "button",
   onClick,
 }) => {
   const currentTheme = React.useContext(ThemeContext);
 
-  const [mainColor, textColor] = getStyle(
-    variant,
-    outlined,
-    currentTheme as Theme
-  );
+  const mainColor = getStyle(variant, outlined, currentTheme);
 
   return outlined ? (
     <OutlinedButton
-      type={type}
       className={["aui-button", `aui-button-${size}`, className].join(" ")}
       mainColor={mainColor}
-      textColor={textColor}
       style={{ backgroundColor }}
       onClick={onClick}
     >
-      {children ? children : label}
+      {children}
     </OutlinedButton>
   ) : (
     <StyledButton
-      type={type}
       className={[
         "aui-button",
         `aui-button-${variant}`,
@@ -106,11 +92,10 @@ const Button: React.FC<ButtonProps> = ({
         className,
       ].join(" ")}
       mainColor={mainColor}
-      textColor={textColor}
       style={{ backgroundColor }}
       onClick={onClick}
     >
-      {children ? children : label}
+      {children}
     </StyledButton>
   );
 };
