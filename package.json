@@ -75,6 +75,7 @@
     "@types/color": "^3.0.3",
     "@types/styled-components": "^5.1.26",
     "color": "^4.2.3",
+    "react-icons": "^4.6.0",
     "styled-components": "^5.3.5"
   }
 }
