@@ -1,13 +1,20 @@
 import { ITheme } from "../src/context/ThemeContext";
 import { lightTheme } from "../src/styles";
+import { IColorProps } from "../src/context/ThemeContext";
 
 export const getStyle = (
-  variant: "primary" | "secondary" | "success" | "danger",
-  outlined: boolean,
-  context?: ITheme
+  context: ITheme | undefined,
+  variant?: "primary" | "secondary" | "success" | "danger" | undefined
 ) => {
-  let color =
-    context?.colors?.main![variant] || lightTheme.colors.main[variant];
+  let color: IColorProps | any;
 
-  return color;
+  if (variant) {
+    color = context?.colors?.main![variant] || lightTheme.colors.main[variant];
+  } else {
+    color = context?.colors?.main || lightTheme.colors.main;
+  }
+
+  let text = context?.colors?.text || lightTheme.colors.text;
+
+  return [color, text];
 };

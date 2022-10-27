@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import ThemeContext from "../../context/ThemeContext";
-
+import { IColorProps } from "../../context/ThemeContext";
 import { getStyle } from "../../../util/getStyle";
 
 import "./Button.scss";
@@ -15,14 +15,6 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   outlined?: boolean;
   rounded?: "";
   onClick?: () => void;
-}
-
-export interface IColorProps {
-  default?: string;
-  light?: string;
-  dark?: string;
-  border?: string;
-  background?: string;
 }
 
 interface StyledButtonProps {
@@ -72,7 +64,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const currentTheme = React.useContext(ThemeContext);
 
-  const mainColor = getStyle(variant, outlined, currentTheme);
+  const mainColor = getStyle(currentTheme, variant)[0] as IColorProps;
 
   return outlined ? (
     <OutlinedButton

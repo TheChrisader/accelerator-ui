@@ -45,5 +45,13 @@ export interface ITheme {
   };
 }
 
+export interface IColorProps {
+  default?: string;
+  light?: string;
+  dark?: string;
+  border?: string;
+  background?: string;
+}
+
 // Create the theme colors state
 export default React.createContext<ITheme | undefined>(undefined);
