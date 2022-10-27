@@ -50,6 +50,7 @@
     "babel-jest": "^29.0.3",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
+    "formik": "^2.2.9",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.0.3",
     "jest-environment-jsdom": "^29.0.3",
