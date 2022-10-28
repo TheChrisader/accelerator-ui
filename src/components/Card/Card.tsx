@@ -19,6 +19,7 @@ const StyledCard = styled.div<IStyledCard>`
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
   font-family: "Poppins", "Nunito Sans", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
