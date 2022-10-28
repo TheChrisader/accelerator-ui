@@ -4,7 +4,7 @@ import styled from "styled-components";
 import ThemeContext from "../../context/ThemeContext";
 import { getStyle } from "../../../util/getStyle";
 
-export interface IField extends React.ComponentPropsWithoutRef<"input"> {
+export interface IField extends React.ComponentPropsWithoutRef<"textarea"> {
   label?: string;
   name: string;
 }
@@ -28,8 +28,10 @@ const InputLabel = styled.span<{ color: string }>`
   margin-bottom: 5px;
 `;
 
-const Input = styled.input<IInput>`
+const Input = styled.textarea<IInput>`
   height: fit-content;
+  max-height: 100px;
+  min-height: fit-content;
   max-width: 100%;
   color: ${(props) => props.text.primary};
   background-color: ${(props) => props.main.white};
@@ -50,7 +52,7 @@ const ErrorMessage = styled(FormikError)<{ color: string }>`
   color: ${(props) => props.color};
 `;
 
-const Field: React.FC<IField> = ({ label, name, ...props }) => {
+const TextArea: React.FC<IField> = ({ label, name, ...props }) => {
   const [field, meta] = useField(name);
 
   const currentTheme = React.useContext(ThemeContext);
@@ -79,4 +81,4 @@ const Field: React.FC<IField> = ({ label, name, ...props }) => {
   );
 };
 
-export default Field;
+export default TextArea;
