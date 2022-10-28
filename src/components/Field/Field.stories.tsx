@@ -13,7 +13,9 @@ const Template: ComponentStory<typeof Field> = (args) => {
   return (
     <Formik initialValues={{ input: "" }} onSubmit={() => {}}>
       <Form>
-        <Field {...args} />
+        <div style={{ width: "400px" }}>
+          <Field {...args} />
+        </div>
       </Form>
     </Formik>
   );

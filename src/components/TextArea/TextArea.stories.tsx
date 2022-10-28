@@ -13,7 +13,9 @@ const Template: ComponentStory<typeof TextArea> = (args) => {
   return (
     <Formik initialValues={{ input: "" }} onSubmit={() => {}}>
       <Form>
-        <TextArea {...args} />
+        <div style={{ width: "400px" }}>
+          <TextArea {...args} />
+        </div>
       </Form>
     </Formik>
   );
