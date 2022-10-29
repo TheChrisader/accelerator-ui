@@ -9,7 +9,7 @@ import { getStyle } from "../../../util/getStyle";
 
 export interface ImageUploadProps {
   url?: string;
-  preview: boolean;
+  preview?: boolean;
   generateURL: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -33,6 +33,7 @@ const StyledLabel = styled.label`
 const StyledUploadIcon = styled(MdFileUpload)<{ color: string }>`
   cursor: pointer;
   font-size: 25px;
+  color: ${(props) => props.color};
   transition: transform 0.5s;
 
   &:hover {
@@ -62,6 +63,7 @@ const StyledButton = styled.button`
 const StyledDeleteIcon = styled(RiDeleteBin6Line)<{ color: string }>`
   cursor: pointer;
   font-size: 20px;
+  color: ${(props) => props.color};
   transition: transform 0.5s;
 
   &:hover {
