@@ -7,3 +7,4 @@ export { default as Checkbox } from "./Checkbox";
 export { default as TextArea } from "./TextArea";
 export { default as Modal } from "./Modal";
 export { default as Select } from "./Select";
+export { default as ImageUpload } from "./ImageUpload";
