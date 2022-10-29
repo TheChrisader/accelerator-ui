@@ -1,6 +1,6 @@
 {
   "name": "@thechrisader/accelerator-ui",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": false,
   "description": "",
   "main": "dist/cjs/index.js",
@@ -76,5 +76,10 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/thechrisader"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/styled-components": "^5.1.26",
+    "framer-motion": "^7.6.2",
+    "react-icons": "^4.6.0",
+    "styled-components": "^5.3.5"
+  }
 }
