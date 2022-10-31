@@ -63,6 +63,7 @@ When you're done creating and testing your component, run rollup to watch your `
 ## What I Could Have Done Differently
 
 * Instead of making every component from scratch, I could've started off with headless components as a base. The whole point of this project was to build customisable and accessible components that could be reused across projects, but those already exist with stuff like Headless UI. This project was a good learing experience, though.
+* I would have started off completely with Styled-Components instead of using Sass. There's nothing wrong with Sass, SC is just more intuitive when it comes to building libraries like this, and it's a lot easier to create customizable components with than with regular CSS.
 
 
 ## License
